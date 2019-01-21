@@ -2,7 +2,7 @@
 import sys
 import random
 from tkinter import *
-import Error
+import WrongDataException
 import time
 from field import Field
 from FieldAsset import FieldAsset
@@ -162,7 +162,7 @@ class Game(object):
         bombs = int(bombs)
 
         if not 2 <= c <= 15 or not 2 <= d <= 15 or not 0 <= bombs <= c * d:
-            raise Error.WrongDataException("")
+            raise WrongDataException.WrongDataException("")
 
         for i in range(0, self._elements):
             self._buttons[i].destroy()
@@ -194,7 +194,7 @@ class Game(object):
         except ValueError:
             self._labelError.grid(row=2, columnspan=5)
             self._labelError.config(text="Niepoprawne dane")
-        except Error.WrongDataException:
+        except WrongDataException.WrongDataException:
             self._labelError.grid(row=2, columnspan=5)
             self._labelError.config(text="Zla wielkosc pola lub zla lizcba bomb")
 
@@ -273,10 +273,11 @@ class Game(object):
         if self._flags == self._count or self._count == 0:
             self._labelError.grid(row=2, columnspan=5)
             self._labelError.config(text="Wygrales", fg="green")
-            self._state = "won"
-            self._fileController.checkRecord(8, 8, 1, 0, self._width, self._height, self._bombs, self._czas)
-            self._fileController.checkRecord(10, 10, 14, 1, self._width, self._height, self._bombs, self._czas)
-            self._fileController.checkRecord(14, 14, 30, 2, self._width, self._height, self._bombs, self._czas)
+            if self._state != "won":
+                self._state = "won"
+                self._fileController.checkRecord(8, 8, 1, 0, self._width, self._height, self._bombs, self._czas)
+                self._fileController.checkRecord(10, 10, 14, 1, self._width, self._height, self._bombs, self._czas)
+                self._fileController.checkRecord(14, 14, 30, 2, self._width, self._height, self._bombs, self._czas)
 
     def lost(self):
         for i in range(self._elements):
@@ -292,5 +293,5 @@ class Game(object):
             self.reset(self._width, self._height, self._bombs)
         except ValueError:
             self.showInformationLabel("Niepoprawne dane")
-        except Error.WrongDataException:
+        except WrongDataException.WrongDataException:
             self.showInformationLabel("Zla wielkosc pola lub zla lizcba bomb")
