@@ -3,7 +3,6 @@ import sys
 import random
 from tkinter import *
 import Error
-from Klasy import *
 import time
 from field import Field
 from FieldAsset import FieldAsset
