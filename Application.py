@@ -1,4 +1,5 @@
 from tkinter import *
+from Game import Game
 
 class Application(object):
 
