@@ -3,7 +3,7 @@ from Game import Game
 from tkinter import *
 from FileController import FileController
 import time
-from field import Field
+from Field import Field
 from asset.SpecAsset import SpecAsset
 from asset.FieldAsset import FieldAsset
 from exception.WrongDataException import WrongDataException

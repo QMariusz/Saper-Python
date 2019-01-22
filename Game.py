@@ -3,7 +3,7 @@ import random
 from tkinter import *
 from exception import WrongDataException
 import time
-from field import Field
+from Field import Field
 from asset.FieldAsset import FieldAsset
 from asset.SpecAsset import SpecAsset
 from FileController import FileController
