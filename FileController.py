@@ -24,7 +24,7 @@ class FileController(object):
                     i+=1
                     j=1
 
-    def donothing(self):
+    def showRecords(self):
         filewin = Toplevel(self._stage)
         for i in range(3):
             for j in range(4):

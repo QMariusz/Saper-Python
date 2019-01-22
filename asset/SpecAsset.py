@@ -1,4 +1,4 @@
-from AbstractAssetManeger import AbstractAssetManeger
+from asset.AbstractAssetManeger import AbstractAssetManeger
 from tkinter import *
 
 class SpecAsset(AbstractAssetManeger):

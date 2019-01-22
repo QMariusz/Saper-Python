@@ -1,12 +1,11 @@
 # coding=utf-8
-import sys
 import random
 from tkinter import *
-import WrongDataException
+from exception import WrongDataException
 import time
 from field import Field
-from FieldAsset import FieldAsset
-from SpecAsset import SpecAsset
+from asset.FieldAsset import FieldAsset
+from asset.SpecAsset import SpecAsset
 from FileController import FileController
 
 
@@ -90,7 +89,7 @@ class Game(object):
         filemenu.add_command(label="Średni", command=lambda: self.reset(10, 10, 14))
         filemenu.add_command(label="Trudny", command=lambda: self.reset(14, 14, 30))
         filemenu.add_separator()
-        filemenu.add_command(label="Rekordy", command=self._fileController.donothing)
+        filemenu.add_command(label="Rekordy", command=self._fileController.showRecords)
         filemenu.add_separator()
         filemenu.add_command(label="Exit", command=self._stage.quit)
         menubar.add_cascade(label="File", menu=filemenu)
@@ -108,7 +107,6 @@ class Game(object):
                 self._buttons[i].config(image=self._special[11])
 
     def createButton(self, stage):
-
         self._buttons = []
         r = 1
         c = 1
